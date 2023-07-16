@@ -1,19 +1,21 @@
 #include <stdio.h>
+
+/**
+* main - Entry point of the program
+*
+* Return: Always 0 (Success)
+*/
 int main(void)
 {
-    int i;
+int digit;
 
-for (i = 0; i < 10; i++)
-    {
-        putchar(i + '0');  /* Print numbers 0-9 */
-    }
+for (digit = 0; digit < 10; digit++)
 
-for (i = 0; i < 6; i++)
-    {
-        putchar(i + 'a');  /* Print lowercase letters a-f */
-    }
+	putchar(digit + '0');
+for (digit = 'a'; digit <= 'f'; digit++)
+	putchar(digit);
 
-    putchar('\n');
+putchar('\n');
 
-return 0;
+return (0);
 }
