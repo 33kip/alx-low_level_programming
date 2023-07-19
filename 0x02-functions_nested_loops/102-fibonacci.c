@@ -1,7 +1,10 @@
 #include <stdio.h>
 
 void print_fibonacci_numbers(int n) {
-    int fib[n];
+    if (n <= 0)
+        return;
+
+    int fib[50];
     fib[0] = 1;
     fib[1] = 2;
 
@@ -11,10 +14,10 @@ void print_fibonacci_numbers(int n) {
 
     for (int i = 0; i < n; i++) {
         printf("%d", fib[i]);
-        if (i != n - 1) {
+        if (i < n - 1)
             printf(", ");
-        }
     }
+
     printf("\n");
 }
 
