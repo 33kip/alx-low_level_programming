@@ -2,58 +2,36 @@
 #include <stdlib.h>
 #include "3-calc.h"
 
-/**
- * main - Entry point
- * @argc: The number of command-line arguments
- * @argv: An array containing the command-line arguments
- *
- * Return: 0 on success, otherwise an error code
- */
 int main(int argc, char *argv[])
 {
-int num1, num2, result;
-if (argc != 4)
-{
-printf("Error\n");
-return (98);
+    if (argc != 4)
+    {
+        printf("Error\n");
+        return 98;
+    }
+
+    int num1 = atoi(argv[1]);
+    char *operator = argv[2];
+    int num2 = atoi(argv[3]);
+
+    int (*op_func)(int, int);
+    op_func = get_op_func(operator);
+
+    if (op_func == NULL)
+    {
+        printf("Error\n");
+        return 99;
+    }
+
+    if (num2 == 0 && (*operator == '/' || *operator == '%'))
+    {
+        printf("Error\n");
+        return 100;
+    }
+
+    int result = op_func(num1, num2);
+    printf("%d\n", result);
+
+    return 0;
 }
-num1 = atoi(argv[1]);
-num2 = atoi(argv[3]);
-if (argv[2][1] != '\0')
-{
-printf("Error\n");
-return (99);
-}
-if ((argv[2][0] == '/' || argv[2][0] == '%') && num2 == 0)
-{
-printf("Error\n");
-return (100);
-}
-if (argv[2][0] == '+')
-{
-result = op_add(num1, num2);
-}
-else if (argv[2][0] == '-')
-{
-result = op_sub(num1, num2);
-}
-else if (argv[2][0] == '*')
-{
-result = op_mul(num1, num2);
-}
-else if (argv[2][0] == '/')
-{
-result = op_div(num1, num2);
-}
-else if (argv[2][0] == '%')
-{
-result = op_mod(num1, num2);
-}
-else
-{
-printf("Error\n");
-return (99);
-}
-printf("%d\n", result);
-return (0);
-}
+
