@@ -3,7 +3,10 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <elf.h>
-
+/**
+ * display_elf_header - Displays the information contained in the ELF header.
+ * @header: A pointer to the ELF header structure.
+ */
 void display_elf_header(Elf64_Ehdr *header) {
     int i;
     printf("ELF Header:\n");
